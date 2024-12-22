@@ -18,4 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Run the Maven verify phase
-        run: ./mvnw -T 1C clean compile test -DskipUT=false -DskipITCase=false --no-snapshot-updates
+        run: |
+          ./mvnw clean package -Dmaven.test.skip --no-snapshot-updates
+          ./mvnw -T 1C clean compile test -DskipUT=false -DskipITCase=false --no-snapshot-updates
